@@ -118,6 +118,7 @@ body {
     height: 300%;
     pointer-events: auto;
     border-radius: 50px;
+    object-fit: center;
 }
 
 
@@ -207,7 +208,7 @@ body {
 }
 
 #stop-game {
-    position: fixed;
+    position: absolute;
     padding: 15px 25px;
     font-size: 24px;
     text-align: center;
