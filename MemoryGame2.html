@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemoryGame</title>
+    <link rel="stylesheet" href="MemoryGame2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <audio id="sui" src="audio/sui.mp3"></audio>
+    <audio id="messi" src="audio/messi.mp4"></audio>
+    <audio id="sound-flip" src="audio/flip.mp3"></audio>
+
+    <div id="input-container">
+        <h1 id="title">MemoryGame</h1>
+        <input type="number" id="card-num" placeholder="cards" min="2" max="30">
+        <input id="player-name" type="text" placeholder="Player Name">
+        <p id="card-error" style="display: none; color: red;"><strong>Please choose a number between 2 and 30.</strong>
+        </p>
+        <p id="name-error" style="display: none; color: red;"><strong>Name must be between 2-30 letters.</strong></p>
+        <p id="card-name-error" style="display: none; color: red;"><strong>Name and Card amount must be between
+                2-30.</strong></p>
+    </div>
+    <div id="display-name"></div>
+    <div id="timer">00:00</div>
+    <button id="stop-game" style="display:none;"><i class="fa fa-stop" style="font-size:48px;color:red"></i></button>
+    <div id="start-button">
+        <button id="start-game" onclick="startGame()"><i class="fa fa-play" style="font-size:36px;"></i></button>
+    </div>
+    <button id="restart-button" style="display: none;"><i class="fa fa-refresh" style="font-size:40px;"></i></button>
+    <div id="end-game-container"></div>
+    <section class="memory-game">
+        <div class="memory-card" data-framework="card1">
+            <img class="front-face" src="img/card1.png" alt="card1">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card1">
+            <img class="front-face" src="img/card1.png" alt="card1">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card2">
+            <img class="front-face" src="img/card2.png" alt="card2">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card2">
+            <img class="front-face" src="img/card2.png" alt="card2">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card3">
+            <img class="front-face" src="img/card3.png" alt="card3">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card3">
+            <img class="front-face" src="img/card3.png" alt="card3">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card4">
+            <img class="front-face" src="img/card4.png" alt="card4">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card4">
+            <img class="front-face" src="img/card4.png" alt="card4">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card5">
+            <img class="front-face" src="img/card5.png" alt="card5">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card5">
+            <img class="front-face" src="img/card5.png" alt="card5">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card6">
+            <img class="front-face" src="img/card6.png" alt="card6">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card6">
+            <img class="front-face" src="img/card6.png" alt="card6">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card7">
+            <img class="front-face" src="img/card7.png" alt="card7">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card7">
+            <img class="front-face" src="img/card7.png" alt="card7">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card8">
+            <img class="front-face" src="img/card8.png" alt="card8">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card8">
+            <img class="front-face" src="img/card8.png" alt="card8">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card9">
+            <img class="front-face" src="img/card9.png" alt="card9">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card9">
+            <img class="front-face" src="img/card9.png" alt="card9">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card10">
+            <img class="front-face" src="img/card10.png" alt="card10">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card10">
+            <img class="front-face" src="img/card10.png" alt="card10">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card11">
+            <img class="front-face" src="img/card11.png" alt="card11">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card11">
+            <img class="front-face" src="img/card11.png" alt="card11">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card12">
+            <img class="front-face" src="img/card12.png" alt="card12">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card12">
+            <img class="front-face" src="img/card12.png" alt="card12">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card13">
+            <img class="front-face" src="img/card13.png" alt="card13">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card13">
+            <img class="front-face" src="img/card13.png" alt="card13">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card14">
+            <img class="front-face" src="img/card14.png" alt="card14">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card14">
+            <img class="front-face" src="img/card14.png" alt="card14">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card15">
+            <img class="front-face" src="img/card15.png" alt="card15">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card15">
+            <img class="front-face" src="img/card15.png" alt="card15">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card16">
+            <img class="front-face" src="img/card16.png" alt="card16">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card16">
+            <img class="front-face" src="img/card16.png" alt="card16">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card17">
+            <img class="front-face" src="img/card17.png" alt="card17">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card17">
+            <img class="front-face" src="img/card17.png" alt="card17">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card18">
+            <img class="front-face" src="img/card18.png" alt="card18">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card18">
+            <img class="front-face" src="img/card18.png" alt="card18">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card19">
+            <img class="front-face" src="img/card19.png" alt="card19">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card19">
+            <img class="front-face" src="img/card19.png" alt="card19">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card20">
+            <img class="front-face" src="img/card20.png" alt="card20">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card20">
+            <img class="front-face" src="img/card20.png" alt="card20">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card21">
+            <img class="front-face" src="img/card21.png" alt="card21">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card21">
+            <img class="front-face" src="img/card21.png" alt="card21">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card22">
+            <img class="front-face" src="img/card22.png" alt="card22">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card22">
+            <img class="front-face" src="img/card22.png" alt="card22">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card23">
+            <img class="front-face" src="img/card23.png" alt="card23">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card23">
+            <img class="front-face" src="img/card23.png" alt="card23">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card24">
+            <img class="front-face" src="img/card24.png" alt="card24">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card24">
+            <img class="front-face" src="img/card24.png" alt="card24">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card25">
+            <img class="front-face" src="img/card25.png" alt="card25">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card25">
+            <img class="front-face" src="img/card25.png" alt="card25">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card26">
+            <img class="front-face" src="img/card26.png" alt="card26">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card26">
+            <img class="front-face" src="img/card26.png" alt="card26">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card27">
+            <img class="front-face" src="img/card27.png" alt="card27">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card27">
+            <img class="front-face" src="img/card27.png" alt="card27">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card28">
+            <img class="front-face" src="img/card28.png" alt="card28">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card28">
+            <img class="front-face" src="img/card28.png" alt="card28">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card29">
+            <img class="front-face" src="img/card29.png" alt="card29">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card29">
+            <img class="front-face" src="img/card29.png" alt="card29">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card30">
+            <img class="front-face" src="img/card30.png" alt="card30">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+        <div class="memory-card" data-framework="card30">
+            <img class="front-face" src="img/card30.png" alt="card30">
+            <img class="back-face" src="img/backwards.jpeg" alt="JSBadge">
+        </div>
+    </section>
+    <script src="MemoryGame2.js"></script>
+</body>
+
+</html>
