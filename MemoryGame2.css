@@ -11,6 +11,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    display: flex;
 }
 
 
@@ -118,7 +119,6 @@ body {
     height: 300%;
     pointer-events: auto;
     border-radius: 50px;
-    object-fit: center;
 }
 
 
@@ -241,4 +241,25 @@ body {
     font-size: 35px;
     margin-right: 400px;
     display: none;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .col-xs-12 {
+        width: 100%;
+    }
 }
